@@ -6,7 +6,7 @@
 #    By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 13:37:47 by mbarra            #+#    #+#              #
-#    Updated: 2021/12/10 19:52:37 by mbarra           ###   ########.fr        #
+#    Updated: 2021/12/13 13:29:49 by mbarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRC =	so_long.c\
 OBJECTS = $(patsubst %.c, %.o, $(SRC))
 
 RM 			= rm -f
-FLAGS 		= -Wall -Wextra -Werror
-LINKS		= -Lmlx -lmlx -framework OpenGL -framework Appkit
+FLAGS 		= -Wall -Wextra #-Werror
+LINKS		= -Lmlx -lmlx -framework OpenGL -framework AppKit
 # ./mlx/libmlx.a
 
 all: $(NAME) 

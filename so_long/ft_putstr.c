@@ -6,15 +6,19 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:57:23 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 16:57:35 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:12:12 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 void	ft_putstr(char	*str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 		write (1, &str[i++], 1);
 }

@@ -6,11 +6,11 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 17:01:47 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:26:13 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long/so_long.h"
 
 t_map	*init_map(t_map *map)
 {
@@ -52,7 +52,7 @@ int	map_pec_size(t_map	*map)
 	}
 	if (map->len - 1 == map->lines)
 	{
-		ft_putstr("Square card!");
+		ft_putstr("Square map!");
 		return (0);
 	}
 	return (1);

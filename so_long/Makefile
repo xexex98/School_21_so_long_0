@@ -6,22 +6,22 @@
 #    By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 13:37:47 by mbarra            #+#    #+#              #
-#    Updated: 2021/12/17 17:00:35 by mbarra           ###   ########.fr        #
+#    Updated: 2021/12/17 17:23:31 by mbarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-HEADER = so_long.h\
+HEADER = so_long.h get_next_line.h\
 
-SRC =	so_long.c ../map/mapinit_and_pec.c	../map/map_rules.c\
+SRC =	so_long.c ../map/map_init_and_pec.c	../map/map_rules.c\
 		../gnl/get_next_line.c ../gnl/get_next_line_utils.c\
 		ft_putstr.c
 
 OBJECTS = $(patsubst %.c, %.o, $(SRC))
 
 RM 			= rm -f
-FLAGS 		= -Wall -Wextra #-Werror
+FLAGS 		= -Wall -Wextra #-Werror -D BUFFER_SIZE=1 
 LINKS		= -Lmlx -lmlx -framework OpenGL -framework AppKit
 # ./mlx/libmlx.a
 

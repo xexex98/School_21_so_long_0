@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:18:39 by mbarra            #+#    #+#             */
-/*   Updated: 2021/11/09 21:08:35 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:01:09 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ char	*ft_read(char *buf2, int fd);
 char	*ft_line(char *buf2);
 char	*ft_line_reminder(char *buf2);
 int		ft_strlen_n(char *s);
+
 #endif

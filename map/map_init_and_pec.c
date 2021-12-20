@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 17:26:13 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/20 14:01:53 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,23 @@ int	map_checker(char *mapf)
 	init_map(map);
 	map->fd = open(mapf, O_RDONLY);
 	if (map->fd < 0)
+	{
+		ft_putstr("No map file!");
 		return (0);
+	}
 	map->line = get_next_line(map->fd);
 	map->len = ft_strlen(map->line);
 	map->columns = map->len - 1;
-	if (map_top(map->line, map) == 1
-		&& map_mid_end(map->line, map) == 1
-		&& map_pec_size(map) == 1
-		&& map_name(mapf) == 1)
+	if (free_map(map, mapf) == 1)
+		return (1);
+	else
+		return (0);
+}
+
+int	free_map(t_map *map, char *mapf)
+{
+	if (map_name(mapf) == 1 && map_top(map->line, map) == 1
+		&& map_mid_end(map->line, map) == 1 && map_pec_size(map) == 1)
 	{
 		free(map);
 		return (1);

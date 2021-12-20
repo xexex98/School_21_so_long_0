@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:50:24 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 17:41:34 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/20 16:01:42 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	map_end(t_map *map)
 
 int	map_mid_end(char *line, t_map *map)
 {
+
 	map->line = get_next_line(map->fd);
 	free(map->line);
 	while ((map->line != NULL))
@@ -95,7 +96,7 @@ int	map_mid_end(char *line, t_map *map)
 		map->line = get_next_line(map->fd);
 		free(map->line);
 	}
-	// free(map->line);
+	// free(map->line); //vrode ne nado
 	return (1);
 }
 
@@ -111,5 +112,8 @@ int	map_name(char	*name)
 		&& name[i + 2] == 'r' && name[i + 3] == '\0')
 		return (1);
 	else
+	{
+		ft_putstr("Wrong map extension!");
 		return (0);
+	}
 }

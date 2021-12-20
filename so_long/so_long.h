@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 17:03:36 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/20 13:58:33 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_map	*init_map(t_map *map);
 void	map_pec_num(char	*line, t_map *map);
 int	map_pec_size(t_map	*map);
 int	map_checker(char *mapf);
+int	free_map(t_map *map, char *mapf);
 int	map_top(char	*line, t_map *map);
 int	map_mid(t_map *map);
 int	map_end(t_map *map);

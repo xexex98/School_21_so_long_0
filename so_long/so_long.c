@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 17:25:59 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/20 15:38:31 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/21 17:49:21 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (map_checker(argv[1]) == 1)
+		{
+			// printf("%i\n", map->columns);
+			// printf("%i\n", map1->lines);
 			printf("Norm");
+		}
 		else
 			printf ("Ne norm");
 	}
@@ -62,6 +66,9 @@ int	main(int argc, char **argv)
 		ft_putstr("Add map name ./so_long 'map_name!'");
 		return (0);
 	}
+	// printf("%i\n", map->columns);
+	// printf("%i\n", map->lines);
+
 	// while (1)
-	// 	;
+		// ;
 }

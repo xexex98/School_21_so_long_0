@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/21 17:48:21 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/22 18:12:14 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_map
 	int		lines;
 	char	*line;
 	int		fd;
+	char	**map_in_array;
 }				t_map;
 
 # define WIN_HEIGHT	800
@@ -49,13 +50,16 @@ int		ft_strlen_n(char *s);
 
 t_map	*init_map(t_map *map);
 void	map_pec_num(char	*line, t_map *map);
-int	map_pec_size(t_map	*map);
-int	map_checker(char *mapf);
-int	free_map(t_map *map, char *mapf);
-int	map_top(char	*line, t_map *map);
-int	map_mid(t_map *map);
-int	map_end(t_map *map);
-int	map_mid_end(char *line, t_map *map);
-int	map_name(char	*name);
+int		map_pec_size(t_map	*map);
+int		map_checker(char *mapf, t_map *map);
+int		free_map(t_map *map, char *mapf);
+int		map_top(char	*line, t_map *map);
+int		map_mid(t_map *map);
+int		map_end(t_map *map);
+int		map_mid_end(char *line, t_map *map);
+int		map_name(char	*name);
+char	**map_in_array(char	*name);
+
+int		map_check_fin(t_map *map, int argc, char *argv);
 
 #endif

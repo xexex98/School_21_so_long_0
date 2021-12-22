@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/21 17:50:35 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/22 20:30:40 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_map	*init_map(t_map *map)
 	map->lines = 1;
 	map->fd = 0;
 	map->line = NULL;
+	map->map_in_array = NULL;
 	return (map);
 }
 
@@ -58,14 +59,8 @@ int	map_pec_size(t_map	*map)
 	return (1);
 }
 
-int	map_checker(char *mapf)
+int	map_checker(char *mapf, t_map *map)
 {
-	t_map	*map;
-
-	map = (t_map *)malloc(sizeof(t_map));
-	if (!map)
-		return (-1);
-	init_map(map);
 	map->fd = open(mapf, O_RDONLY);
 	if (map->fd < 0)
 	{
@@ -77,8 +72,17 @@ int	map_checker(char *mapf)
 	map->columns = map->len - 1;
 	if (free_map(map, mapf) == 1)
 	{
-		printf("\n%i", map->columns);
-		printf("\n%i", map->lines);
+		map->map_in_array = map_in_array(mapf);
+		// не забыть очистить массив
+		// int i = 0;
+		// while(i < 4)
+		// {
+		// 	free(map->map_in_array[i]);
+		// 	i++;
+		// }
+		// free(map->map_in_array);
+		// printf("%p\n", map->map_in_array);
+		// printf("%s", map->map_in_array[3]);
 		return (1);
 	}
 	else
@@ -90,14 +94,14 @@ int	free_map(t_map *map, char *mapf)
 	if (map_name(mapf) == 1 && map_top(map->line, map) == 1
 		&& map_mid_end(map->line, map) == 1 && map_pec_size(map) == 1)
 	{
-		free(map);
+		// free(map);
 		close(map->fd);
 		return (1);
 	}
 	else
 	{
 		close(map->fd);
-		free(map);
+		// free(map);
 		return (0);
 	}
 }

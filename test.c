@@ -2,67 +2,42 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "so_long.h"
 # include "./gnl/get_next_line.h"
 
-
-char **map_in_array(void)
+typedef struct	s_mlx
 {
-	char	**array;
-	char	*linegnl;
-	int		fd;
-	int		i;
+	void	*mlx;
+	void	*win;
+}				t_mlx;
 
-	i = 0;
-	fd = open("map.ber", O_RDONLY);
-	array = malloc(100);
-	linegnl = get_next_line(fd);
-	array[i++] = linegnl;
-	while (linegnl != NULL)
-	{		
-		linegnl = get_next_line(fd);
-		array[i] = linegnl;
-		i++;
-	}
-	close(fd);
-	return (array);
+typedef	struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_lenght;
+	int		endian;
+}				t_img;
+
+int	key_hook(int keycode, t_mlx *mlx)
+{
+	printf("Hello from key_hook!\n");
 }
 
-int main(void)
+int	main(void)
 {
-	char	**array;
+	t_mlx	mlx;
+	t_img	img;
+	void	*mlx_image;
+	void	*image;
 
-	array =	map_in_array();
-	printf("%s\n", array[0]);
-	// while (1)
-		// ;
-	return (0);
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "Hello world!");
+	img.img = mlx_new_image(mlx.mlx, 400, 400);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
+	mlx_pixel_put(mlx.mlx, mlx.win, 40, 40, 0x00FF0000);
+	// mlx_key_hook(mlx.win, key_hook, &mlx);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 50, 50);
+	mlx_loop(mlx.mlx);
 }
-// free
-	// for (int j = 0; j < i; j++)
-	// {
-	// 	printf("%s", array[j]);
-	// 	free(array[j]);
-	// }
-	// free(array);
-
-// int main(void)
-// {
-// 	char	**line;
-// 	char	*linegnl;
-// 	int		fd;
-// 	int		i;
-
-// 	i = 0;
-// 	fd = open("map.ber", O_RDONLY);
-// 	while ((linegnl = get_next_line(fd)))
-// 	{
-// 		line[i] = linegnl;
-// 		i++;
-// 	}
-// 	for (int j = 0; j < i; j++)
-// 		printf("%s", line[j]);
-// 	close(fd);
-// 	// while (1)
-// 		// ;
-// 	return (0);
-// }

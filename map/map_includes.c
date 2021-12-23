@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 18:12:30 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/23 16:23:19 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/23 17:16:30 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void	map_draw(t_map *map, t_img *img, t_mlx *mlx)
 		while (map->map_in_array[map->j][map->i] != '\0')
 		{
 			if (map->map_in_array[map->j][map->i] == '1')
-				paste_img(map, img, mlx, "./1.xpm");
+				paste_img(map, img, mlx, "../img/1.xpm");
 			if (map->map_in_array[map->j][map->i] == '0')
-				paste_img(map, img, mlx, "./0.xpm");
+				paste_img(map, img, mlx, "../img/0.xpm");
 			if (map->map_in_array[map->j][map->i] == 'C')
-				paste_img(map, img, mlx, "./C.xpm");
+				paste_img(map, img, mlx, "../img/C.xpm");
 			if (map->map_in_array[map->j][map->i] == 'P')
-				paste_img(map, img, mlx, "./P.xpm");
+				paste_img(map, img, mlx, "../img/P.xpm");
 			if (map->map_in_array[map->j][map->i] == 'E')
-				paste_img(map, img, mlx, "./E.xpm");
+				paste_img(map, img, mlx, "../img/E.xpm");
 			map->i++;
 		}
 		map->i = 0;

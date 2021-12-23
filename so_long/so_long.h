@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/22 18:12:14 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/23 16:17:06 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,24 @@ typedef struct s_map
 	char	**map_in_array;
 }				t_map;
 
-# define WIN_HEIGHT	800
-# define WIN_WIDTH	600
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}				t_mlx;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*relative_path;
+	int		img_width;
+	int		img_height;
+	int		endian;
+}				t_img;
+
+# define PIXELS 40
+// # define WIN_HEIGHT	800
+// # define WIN_WIDTH	600
 
 void	ft_putstr(char	*str);
 
@@ -58,8 +74,11 @@ int		map_mid(t_map *map);
 int		map_end(t_map *map);
 int		map_mid_end(char *line, t_map *map);
 int		map_name(char	*name);
-char	**map_in_array(char	*name);
 
+// char	**map_in_array(char	*name);
+char	**map_in_array(char *name, t_map *map);
 int		map_check_fin(t_map *map, int argc, char *argv);
+void	paste_img(t_map *map, t_img *img, t_mlx *mlx, char	*imgname);
+void	map_draw(t_map *map, t_img *img, t_mlx *mlx);
 
 #endif

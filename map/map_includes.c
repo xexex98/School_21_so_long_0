@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 18:12:30 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/23 17:16:30 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/25 13:40:34 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ void	paste_img(t_map *map, t_img *img, t_mlx *mlx, char	*imgname)
 		close (fd);
 	}
 	else
-		return ;
+	{	
+		ft_putstr("Net kartinki : ");
+		ft_putstr(imgname);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	map_draw(t_map *map, t_img *img, t_mlx *mlx)

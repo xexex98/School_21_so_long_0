@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/25 18:22:17 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/26 18:32:02 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include "../gnl/get_next_line.h"
 # include <fcntl.h>
-# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 # define PIXELS	40
@@ -25,6 +25,12 @@
 # define D		2
 # define W		13
 # define ESC	53
+
+typedef struct s_p
+{
+	int	x;
+	int	y;
+}				t_p;
 
 typedef struct s_map
 {
@@ -41,62 +47,40 @@ typedef struct s_map
 	char	**map_in_array;
 }				t_map;
 
-// typedef struct s_mlx
-// {
-// 	void	*mlx;
-// 	void	*win;
-// }				t_mlx;
-
-typedef struct s_img
-{
-	void	*img;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
-	int		endian;
-}				t_img;
-
-
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
+
 	void	*img;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
 	int		endian;
+
+
 }				t_mlx;
 
-# define WIN_HEIGHT	800
-# define WIN_WIDTH	600
 
-void	ft_putstr(char	*str);
+void	exit_error(int error);
+int		close_game(t_mlx *mlx);
 
-char	*get_next_line(int fd);
-int		ft_strlen(char *str);
-char	*ft_strchr(char *str, char c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_read(char *buf2, int fd);
-char	*ft_line(char *buf2);
-char	*ft_line_reminder(char *buf2);
-int		ft_strlen_n(char *s);
+void	map_validity(t_map *map, int argc, char *mapf);
+void	map_name(char	*name);
+void	p_e_c_num(char	*line, t_map *map);
+void	map_pec_size(t_map	*map);
 
 t_map	*init_map(t_map *map);
-void	map_pec_num(char	*line, t_map *map);
-int		map_pec_size(t_map	*map);
-int		map_checker(char *mapf, t_map *map);
-int		free_map(t_map *map, char *mapf);
-int		map_top(char	*line, t_map *map);
-int		map_mid(t_map *map);
-int		map_end(t_map *map);
-int		map_mid_end(char *line, t_map *map);
-int		map_name(char	*name);
+void	map_top(char	*line, t_map *map);
+void	map_mid(t_map *map);
+void	map_end(t_map *map);
+void	map_mid_end(char *line, t_map *map);
 
-// char	**map_in_array(char	*name);
 char	**map_in_array(char *name, t_map *map);
-int		map_check_fin(t_map *map, int argc, char *argv);
-void	paste_img(t_map *map, t_img *img, t_mlx *mlx, char	*imgname);
-void	map_draw(t_map *map, t_img *img, t_mlx *mlx);
+void	paste_img(t_map *map, t_mlx *mlx, char	*imgname);
+void	map_draw(t_map *map, t_mlx *mlx);
+void	player_pos(t_map *map);
+void	init_mlx(t_mlx *mlx, t_map *map);
 
+void player_img(t_mlx *mlx);
 #endif

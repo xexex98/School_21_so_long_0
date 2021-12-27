@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 17:30:00 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:04:54 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,15 @@
 # define W		13
 # define ESC	53
 
-// typedef struct s_map
-// {
-
-// }				t_map;
-
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-
 	void	*img;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
 	int		endian;
-
 	int		ee;
 	int		pp;
 	int		cc;
@@ -53,14 +46,12 @@ typedef struct s_mlx
 	char	*line;
 	int		fd;
 	char	**map_in_array;
-	
 	int		x;
 	int		y;
 	int		coins;
 	int		all_coins;
 	int		moves;
 }				t_mlx;
-
 
 void	exit_error(int error);
 int		close_game(t_mlx *mlx);
@@ -82,5 +73,8 @@ void	map_draw(t_mlx *mlx);
 void	player_pos(t_mlx *mlx);
 void	init_mlx(t_mlx *mlx);
 
-void player_img(t_mlx *mlx);
+void	coin(t_mlx	*mlx);
+void	gexit(t_mlx *mlx);
+void	move(t_mlx *mlx, int x, int y);
+int		key_press_hook(int keycode, t_mlx *mlx);
 #endif

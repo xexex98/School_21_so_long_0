@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 17:11:30 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:02:48 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map_top(char	*line, t_mlx *mlx)
 	while (mlx->line[mlx->i] != '\n')
 	{
 		if (mlx->line[mlx->i] != '1')
-			exit_error(4);			
+			exit_error(4);
 		mlx->i++;
 	}
 	free(mlx->line);

@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:59:45 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 13:19:40 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 19:02:34 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	map_validity(t_mlx *mlx, int argc, char *mapf)
 		mlx->map_in_array = map_in_array(mapf, mlx);
 	}
 	else
-		exit_error(10);		// не забыть очистить массив
+		exit_error(10);
 }
 
 void	map_name(char	*name)
@@ -68,5 +68,3 @@ void	map_pec_size(t_mlx	*mlx)
 	if (mlx->len - 1 == mlx->lines)
 		exit_error(2);
 }
-
-

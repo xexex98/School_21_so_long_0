@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:04:03 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/26 16:36:30 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 18:51:45 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	exit_error(int error)
 
 int	close_game(t_mlx *mlx)
 {
-	//нужно еще фришить картинки и прочее
 	mlx_destroy_window(mlx->mlx, mlx->win);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

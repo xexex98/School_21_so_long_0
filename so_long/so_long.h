@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/26 18:32:02 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 17:30:00 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,10 @@
 # define W		13
 # define ESC	53
 
-typedef struct s_p
-{
-	int	x;
-	int	y;
-}				t_p;
+// typedef struct s_map
+// {
 
-typedef struct s_map
-{
-	int		ee;
-	int		pp;
-	int		cc;
-	int		i;
-	int		j;
-	int		columns;
-	int		len;
-	int		lines;
-	char	*line;
-	int		fd;
-	char	**map_in_array;
-}				t_map;
+// }				t_map;
 
 typedef struct s_mlx
 {
@@ -58,29 +42,45 @@ typedef struct s_mlx
 	int		img_height;
 	int		endian;
 
-
+	int		ee;
+	int		pp;
+	int		cc;
+	int		i;
+	int		j;
+	int		columns;
+	int		len;
+	int		lines;
+	char	*line;
+	int		fd;
+	char	**map_in_array;
+	
+	int		x;
+	int		y;
+	int		coins;
+	int		all_coins;
+	int		moves;
 }				t_mlx;
 
 
 void	exit_error(int error);
 int		close_game(t_mlx *mlx);
 
-void	map_validity(t_map *map, int argc, char *mapf);
+void	map_validity(t_mlx *mlx, int argc, char *mapf);
 void	map_name(char	*name);
-void	p_e_c_num(char	*line, t_map *map);
-void	map_pec_size(t_map	*map);
+void	p_e_c_num(char	*line, t_mlx *mlx);
+void	map_pec_size(t_mlx *mlx);
 
-t_map	*init_map(t_map *map);
-void	map_top(char	*line, t_map *map);
-void	map_mid(t_map *map);
-void	map_end(t_map *map);
-void	map_mid_end(char *line, t_map *map);
+void	init_map(t_mlx *mlx);
+void	map_top(char	*line, t_mlx *mlx);
+void	map_mid(t_mlx *mlx);
+void	map_end(t_mlx *mlx);
+void	map_mid_end(char *line, t_mlx *mlx);
 
-char	**map_in_array(char *name, t_map *map);
-void	paste_img(t_map *map, t_mlx *mlx, char	*imgname);
-void	map_draw(t_map *map, t_mlx *mlx);
-void	player_pos(t_map *map);
-void	init_mlx(t_mlx *mlx, t_map *map);
+char	**map_in_array(char *name, t_mlx *mlx);
+void	paste_img(t_mlx *mlx, char	*imgname);
+void	map_draw(t_mlx *mlx);
+void	player_pos(t_mlx *mlx);
+void	init_mlx(t_mlx *mlx);
 
 void player_img(t_mlx *mlx);
 #endif

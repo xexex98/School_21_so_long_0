@@ -6,28 +6,28 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:59:45 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/26 16:35:19 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 13:19:40 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long/so_long.h"
 
-void	map_validity(t_map *map, int argc, char *mapf)
+void	map_validity(t_mlx *mlx, int argc, char *mapf)
 {
 	if (argc == 2)
 	{
-		init_map(map);
-		map->fd = open(mapf, O_RDONLY);
-		if (map->fd < 0)
+		init_map(mlx);
+		mlx->fd = open(mapf, O_RDONLY);
+		if (mlx->fd < 0)
 			exit_error(3);
-		map->line = get_next_line(map->fd);
-		map->len = ft_strlen(map->line);
-		map->columns = map->len - 1;
+		mlx->line = get_next_line(mlx->fd);
+		mlx->len = ft_strlen(mlx->line);
+		mlx->columns = mlx->len - 1;
 		map_name(mapf);
-		map_top(map->line, map);
-		map_mid_end(map->line, map);
-		map_pec_size(map);
-		map->map_in_array = map_in_array(mapf, map);
+		map_top(mlx->line, mlx);
+		map_mid_end(mlx->line, mlx);
+		map_pec_size(mlx);
+		mlx->map_in_array = map_in_array(mapf, mlx);
 	}
 	else
 		exit_error(10);		// не забыть очистить массив
@@ -46,26 +46,26 @@ void	map_name(char	*name)
 		exit_error(6);
 }
 
-void	p_e_c_num(char	*line, t_map *map)
+void	p_e_c_num(char	*line, t_mlx *mlx)
 {
-	while (map->line[map->j])
+	while (mlx->line[mlx->j])
 	{
-		if (map->line[map->j] == 'E')
-			map->ee++;
-		if (map->line[map->j] == 'P')
-			map->pp++;
-		if (map->line[map->j] == 'C')
-			map->cc++;
-		map->j++;
+		if (mlx->line[mlx->j] == 'E')
+			mlx->ee++;
+		if (mlx->line[mlx->j] == 'P')
+			mlx->pp++;
+		if (mlx->line[mlx->j] == 'C')
+			mlx->cc++;
+		mlx->j++;
 	}
-	map->j = 0;
+	mlx->j = 0;
 }
 
-void	map_pec_size(t_map	*map)
+void	map_pec_size(t_mlx	*mlx)
 {
-	if (map->ee < 1 || map->pp != 1 || map->cc < 1)
+	if (mlx->ee < 1 || mlx->pp != 1 || mlx->cc < 1)
 		exit_error(1);
-	if (map->len - 1 == map->lines)
+	if (mlx->len - 1 == mlx->lines)
 		exit_error(2);
 }
 

@@ -6,7 +6,7 @@
 #    By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 13:37:47 by mbarra            #+#    #+#              #
-#    Updated: 2021/12/26 16:33:34 by mbarra           ###   ########.fr        #
+#    Updated: 2021/12/27 13:23:02 by mbarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,10 @@ clean:
 	@$(RM) $(OBJECTS)
 cleanmlx:
 	@make clean -C ./mlx
-fclean: clean
+#fclean
+f: clean
 	@$(RM) $(NAME)
 
-re: fclean all
+re: f all
 
-.PHONY: all clean fclean re
+.PHONY: all clean f re

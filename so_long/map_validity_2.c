@@ -6,84 +6,88 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/26 18:13:00 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 17:11:30 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long/so_long.h"
 
-t_map	*init_map(t_map *map)
+void	init_map(t_mlx *mlx)
 {
-	map->ee = 0;
-	map->pp = 0;
-	map->cc = 0;
-	map->i = 0;
-	map->j = 0;
-	map->columns = 0;
-	map->len = 0;
-	map->lines = 1;
-	map->line = NULL;
-	map->fd = 0;
-	map->map_in_array = NULL;
-	return (map);
+	mlx->ee = 0;
+	mlx->pp = 0;
+	mlx->cc = 0;
+	mlx->i = 0;
+	mlx->j = 0;
+	mlx->columns = 0;
+	mlx->len = 0;
+	mlx->lines = 1;
+	mlx->line = NULL;
+	mlx->fd = 0;
+	mlx->map_in_array = NULL;
+	mlx->x = 0;
+	mlx->y = 0;
+	mlx->coins = 0;
+	mlx->all_coins = 0;
+	mlx->moves = 0;
 }
 
-void	map_top(char	*line, t_map *map)
+void	map_top(char	*line, t_mlx *mlx)
 {
-	map->i = 0;
-	while (map->line[map->i] != '\n')
+	mlx->i = 0;
+	while (mlx->line[mlx->i] != '\n')
 	{
-		if (map->line[map->i] != '1')
+		if (mlx->line[mlx->i] != '1')
 			exit_error(4);			
-		map->i++;
+		mlx->i++;
 	}
-	free(map->line);
+	free(mlx->line);
 }
 
-void	map_mid(t_map *map)
+void	map_mid(t_mlx *mlx)
 {
-	map->i = 0;
-	p_e_c_num(map->line, map);
-	if (map->line[0] != '1' || map->line[map->columns - 1] != '1')
+	mlx->i = 0;
+	p_e_c_num(mlx->line, mlx);
+	if (mlx->line[0] != '1' || mlx->line[mlx->columns - 1] != '1')
 		exit_error(4);
-	while (map->line[map->i])
+	while (mlx->line[mlx->i])
 	{
-		if (map->line[map->i] != '1' && map->line[map->i] != '0'
-			&& map->line[map->i] != 'P' && map->line[map->i] != 'E'
-			&& map->line[map->i] != 'C' && map->line[map->i] != '\n')
+		if (mlx->line[mlx->i] != '1' && mlx->line[mlx->i] != '0'
+			&& mlx->line[mlx->i] != 'P' && mlx->line[mlx->i] != 'E'
+			&& mlx->line[mlx->i] != 'C' && mlx->line[mlx->i] != '\n')
 			exit_error(5);
-		map->i++;
+		mlx->i++;
 	}
-	map->i = 0;
+	mlx->i = 0;
 }
 
-void	map_end(t_map *map)
+void	map_end(t_mlx *mlx)
 {
-	map->i = 0;
-	while (map->line[map->i])
+	mlx->i = 0;
+	while (mlx->line[mlx->i])
 	{
-		if (map->line[map->i] == '1')
-			map->i++;
+		if (mlx->line[mlx->i] == '1')
+			mlx->i++;
 		else
 			exit_error(4);
 	}
-	map->i = 0;
+	mlx->i = 0;
 }
 
-void	map_mid_end(char *line, t_map *map)
+void	map_mid_end(char *line, t_mlx *mlx)
 {
-	map->line = get_next_line(map->fd);
-	free(map->line);
-	while ((map->line != NULL))
+	mlx->line = get_next_line(mlx->fd);
+	free(mlx->line);
+	while ((mlx->line != NULL))
 	{
-		map->lines++;
-		if (map->line[map->columns] == '\0')
-			map_end(map);
-		else if (map->line[map->columns] == '\n')
-			map_mid(map);
+		mlx->lines++;
+		if (mlx->line[mlx->columns] == '\0')
+			map_end(mlx);
+		else if (mlx->line[mlx->columns] == '\n')
+			map_mid(mlx);
 		else
 			exit_error(6);
-		map->line = get_next_line(map->fd);
-		free(map->line);
+		mlx->line = get_next_line(mlx->fd);
+		free(mlx->line);
 	}
 }

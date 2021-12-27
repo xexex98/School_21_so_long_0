@@ -6,98 +6,76 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 17:25:59 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/26 18:32:31 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/27 18:50:40 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+// чел хватит путать x и y в массивеывадфыжаыфафыавыфэоавжыфа
 
-void	up(t_mlx *mlx)
+void	coin(t_mlx	*mlx)
 {
-	t_p	p;
-	player_img(mlx);
-	p.y += 1;
-	p.x += 0;
+	if (mlx->map_in_array[mlx->y][mlx->x] == 'C')
+	{
+		mlx->map_in_array[mlx->y][mlx->x] = '0';
+		mlx->coins++;
+	}
 }
 
-void	left(t_mlx *mlx)
+void	gexit(t_mlx *mlx)
 {
-	t_p	p;
-
-	player_img(mlx);
-	p.y += 0;
-	p.x -= 1;
-
+	if (mlx->map_in_array[mlx->y][mlx->x] == 'E' && mlx->coins == mlx->all_coins)
+	{
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		printf("You won, gg!\n");
+		exit(0);
+	}
+	
+}
+void	move(t_mlx *mlx, int x, int y)
+{
+	if (mlx->map_in_array[mlx->y + y][mlx->x + x] != '1')
+	{
+		mlx->moves++;
+		if (mlx->map_in_array[mlx->y][mlx->x] != 'E')
+			mlx->map_in_array[mlx->y][mlx->x] = '0';
+		mlx->y += y;
+		mlx->x += x;
+		coin(mlx);
+		map_draw(mlx);
+		printf("Moves: %i\n", mlx->moves);
+		mlx->img = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm", &mlx->img_width, &mlx->img_height);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, mlx->x * PIXELS, mlx->y * PIXELS);
+		gexit(mlx);
+	}
 }
 
-void	down(t_mlx *mlx)
+int key_press_hook(int keycode, t_mlx *mlx)
 {
-	t_p	p;
-
-	player_img(mlx);
-	p.y -= 1;
-	p.x += 0;
-}
-
-void	right(t_mlx *mlx)
-{
-	t_p	p;
-
-	player_img(mlx);
-	p.y += 0;
-	p.x += 1;
-}
-
-void player_img(t_mlx *mlx)
-{
-	t_p	p;
-
-	// p.y = 0;
-	// p.x = 0;
-	mlx->img = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm", &mlx->img_width, &mlx->img_height);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, p.x * PIXELS, p.y * PIXELS);
-	printf("x = %i\n", p.x);
-	printf("y = %i\n", p.y);
-}
-
-
-
-int key_press(int keycode, t_mlx *mlx)
-{
-	t_map	map;
-
 	if (keycode == W)
-		up(mlx);
+		move(mlx, 0, -1);
 	if (keycode == A)
-		left(mlx);
+		move(mlx, -1, 0);
 	if (keycode == S)
-		down(mlx);
+		move(mlx, 0, 1);
 	if (keycode == D)
-		right(mlx);
-	if (keycode == ESC)
-		close_game(mlx);
+		move(mlx, 1, 0);
+	// if (keycode == ESC)
+	// 	close_game(mlx);
 	return (0);
 }
-
-// int	actions(t_mlx *mlx)
-// {
-
-// }
 
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
-	t_map	map;
-	t_p		p;
-	map_validity(&map, argc, argv[1]);
-	init_mlx(&mlx, &map);
-	map_draw(&map, &mlx);
 
-	player_pos(&map);
-	mlx_hook(mlx.win, 2, 1L << 0, key_press, &mlx);
-	// mlx_loop_hook(mlx->mlx, actions, mlx);
-	// actions(&mlx);
-	
+	map_validity(&mlx, argc, argv[1]);
+	init_mlx(&mlx);
+	map_draw(&mlx);
+
+	player_pos(&mlx);
+	mlx_hook(mlx.win, 2, 0, key_press_hook, &mlx);
+	mlx_hook(mlx.win, 17, 1L << 2, close_game, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

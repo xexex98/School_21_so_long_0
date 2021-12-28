@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 14:51:35 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 14:51:52 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 15:36:21 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,15 @@ char	*ft_itoa(int n)
 		num = num / 10;
 	}
 	return (str);
+}
+
+void	init_mlx(t_mlx *mlx)
+{
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
+		exit_error(8);
+	mlx->win = mlx_new_window(mlx->mlx, mlx->columns * PIXELS,
+			mlx->lines * PIXELS, "so_long");
+	if (!mlx->win)
+		exit_error(8);
 }

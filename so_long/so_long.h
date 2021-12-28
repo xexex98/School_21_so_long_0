@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 14:53:37 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 15:36:46 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ char	*ft_itoa(int n);
 
 char	**map_in_array(char *name, t_mlx *mlx);
 void	paste_img(t_mlx *mlx, char	*imgname);
+void	map_draw_2(t_mlx *mlx);
 void	map_draw(t_mlx *mlx);
 void	player_pos(t_mlx *mlx);
-void	init_mlx(t_mlx *mlx);
+
 
 void	init_map(t_mlx *mlx);
 void	map_top(char	*line, t_mlx *mlx);
@@ -84,11 +85,8 @@ void	map_name(char	*name);
 void	p_e_c_num(char	*line, t_mlx *mlx);
 void	map_pec_size(t_mlx *mlx);
 
-
-
-
-
-
 size_t	ft_intlen(int c);
 char	*ft_itoa(int n);
+void	init_mlx(t_mlx *mlx);
+
 #endif

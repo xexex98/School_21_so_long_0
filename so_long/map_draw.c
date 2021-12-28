@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 14:53:23 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 15:36:13 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,25 @@ void	paste_img(t_mlx *mlx, char	*imgname)
 	close (fd);
 }
 
+void	map_draw_2(t_mlx *mlx)
+{
+	if (mlx->map_in_array[mlx->j][mlx->i] == 'C')
+	{
+		paste_img(mlx, "../img/0.xpm");
+		paste_img(mlx, "../img/C.xpm");
+	}
+	if (mlx->map_in_array[mlx->j][mlx->i] == 'P')
+	{
+		paste_img(mlx, "../img/0.xpm");
+		paste_img(mlx, "../img/P.xpm");
+	}
+	if (mlx->map_in_array[mlx->j][mlx->i] == 'K')
+	{
+		paste_img(mlx, "../img/0.xpm");
+		paste_img(mlx, "../img/K.xpm");
+	}
+}
+
 void	map_draw(t_mlx *mlx)
 {
 	while (mlx->j < mlx->lines)
@@ -58,16 +77,6 @@ void	map_draw(t_mlx *mlx)
 				paste_img(mlx, "../img/1.xpm");
 			if (mlx->map_in_array[mlx->j][mlx->i] == '0')
 				paste_img(mlx, "../img/0.xpm");
-			if (mlx->map_in_array[mlx->j][mlx->i] == 'C')
-			{
-				paste_img(mlx, "../img/0.xpm");
-				paste_img(mlx, "../img/C.xpm");
-			}
-			if (mlx->map_in_array[mlx->j][mlx->i] == 'P')
-			{
-				paste_img(mlx, "../img/0.xpm");
-				paste_img(mlx, "../img/P.xpm");
-			}
 			if (mlx->map_in_array[mlx->j][mlx->i] == 'E')
 			{
 				paste_img(mlx, "../img/0.xpm");
@@ -76,11 +85,7 @@ void	map_draw(t_mlx *mlx)
 				else
 					paste_img(mlx, "../img/E.xpm");
 			}
-			if (mlx->map_in_array[mlx->j][mlx->i] == 'K')
-			{
-				paste_img(mlx, "../img/0.xpm");
-				paste_img(mlx, "../img/K.xpm");
-			}
+			map_draw_2(mlx);
 			mlx->i++;
 		}
 		mlx->i = 0;
@@ -109,15 +114,4 @@ void	player_pos(t_mlx *mlx)
 		mlx->j++;
 	}
 	mlx->j = 0;
-}
-
-void	init_mlx(t_mlx *mlx)
-{
-	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		exit_error(8);
-	mlx->win = mlx_new_window(mlx->mlx, mlx->columns * PIXELS,
-			mlx->lines * PIXELS, "so_long");
-	if (!mlx->win)
-		exit_error(8);
 }

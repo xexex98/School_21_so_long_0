@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 19:02:25 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:53:23 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,28 @@ void	map_draw(t_mlx *mlx)
 			if (mlx->map_in_array[mlx->j][mlx->i] == '0')
 				paste_img(mlx, "../img/0.xpm");
 			if (mlx->map_in_array[mlx->j][mlx->i] == 'C')
+			{
+				paste_img(mlx, "../img/0.xpm");
 				paste_img(mlx, "../img/C.xpm");
+			}
 			if (mlx->map_in_array[mlx->j][mlx->i] == 'P')
 			{
 				paste_img(mlx, "../img/0.xpm");
 				paste_img(mlx, "../img/P.xpm");
 			}
 			if (mlx->map_in_array[mlx->j][mlx->i] == 'E')
-				paste_img(mlx, "../img/E.xpm");
+			{
+				paste_img(mlx, "../img/0.xpm");
+				if (mlx->eo == 1)
+					paste_img(mlx, "../img/Eo.xpm");
+				else
+					paste_img(mlx, "../img/E.xpm");
+			}
+			if (mlx->map_in_array[mlx->j][mlx->i] == 'K')
+			{
+				paste_img(mlx, "../img/0.xpm");
+				paste_img(mlx, "../img/K.xpm");
+			}
 			mlx->i++;
 		}
 		mlx->i = 0;

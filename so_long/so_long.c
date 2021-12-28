@@ -6,12 +6,17 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 17:25:59 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 19:02:58 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:54:32 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // чел хватит путать x и y в массивеывадфыжаыфафыавыфэоавжыфа
 #include "so_long.h"
+
+int	paste_img_2(void *mlx)
+{
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,6 +28,7 @@ int	main(int argc, char **argv)
 	player_pos(&mlx);
 	mlx_hook(mlx.win, 2, 0, key_press_hook, &mlx);
 	mlx_hook(mlx.win, 17, 1L << 2, close_game, &mlx);
+	// // mlx_loop_hook(mlx.win, paste_img_2, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 19:04:54 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 14:53:37 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ typedef struct s_mlx
 	int		coins;
 	int		all_coins;
 	int		moves;
+	int		eo;
 }				t_mlx;
 
 void	exit_error(int error);
 int		close_game(t_mlx *mlx);
+void	free_map(t_mlx *mlx);
 
-void	map_validity(t_mlx *mlx, int argc, char *mapf);
-void	map_name(char	*name);
-void	p_e_c_num(char	*line, t_mlx *mlx);
-void	map_pec_size(t_mlx *mlx);
+void	coin(t_mlx	*mlx);
+void	death(t_mlx *mlx);
+void	gexit(t_mlx *mlx);
+void	move(t_mlx *mlx, int x, int y);
+int		key_press_hook(int keycode, t_mlx *mlx);
 
-void	init_map(t_mlx *mlx);
-void	map_top(char	*line, t_mlx *mlx);
-void	map_mid(t_mlx *mlx);
-void	map_end(t_mlx *mlx);
-void	map_mid_end(char *line, t_mlx *mlx);
+size_t	ft_intlen(int c);
+char	*ft_itoa(int n);
 
 char	**map_in_array(char *name, t_mlx *mlx);
 void	paste_img(t_mlx *mlx, char	*imgname);
@@ -73,8 +73,22 @@ void	map_draw(t_mlx *mlx);
 void	player_pos(t_mlx *mlx);
 void	init_mlx(t_mlx *mlx);
 
-void	coin(t_mlx	*mlx);
-void	gexit(t_mlx *mlx);
-void	move(t_mlx *mlx, int x, int y);
-int		key_press_hook(int keycode, t_mlx *mlx);
+void	init_map(t_mlx *mlx);
+void	map_top(char	*line, t_mlx *mlx);
+void	map_mid(t_mlx *mlx);
+void	map_end(t_mlx *mlx);
+void	map_mid_end(char *line, t_mlx *mlx);
+
+void	map_validity(t_mlx *mlx, int argc, char *mapf);
+void	map_name(char	*name);
+void	p_e_c_num(char	*line, t_mlx *mlx);
+void	map_pec_size(t_mlx *mlx);
+
+
+
+
+
+
+size_t	ft_intlen(int c);
+char	*ft_itoa(int n);
 #endif

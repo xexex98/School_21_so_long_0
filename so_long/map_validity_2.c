@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 19:02:48 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 12:40:56 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_map(t_mlx *mlx)
 	mlx->coins = 0;
 	mlx->all_coins = 0;
 	mlx->moves = 0;
+	mlx->eo = 0;
 }
 
 void	map_top(char	*line, t_mlx *mlx)
@@ -54,7 +55,8 @@ void	map_mid(t_mlx *mlx)
 	{
 		if (mlx->line[mlx->i] != '1' && mlx->line[mlx->i] != '0'
 			&& mlx->line[mlx->i] != 'P' && mlx->line[mlx->i] != 'E'
-			&& mlx->line[mlx->i] != 'C' && mlx->line[mlx->i] != '\n')
+			&& mlx->line[mlx->i] != 'C' && mlx->line[mlx->i] != '\n'
+			&& mlx->line[mlx->i] != 'K')
 			exit_error(5);
 		mlx->i++;
 	}

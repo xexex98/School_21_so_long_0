@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 15:36:46 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 18:11:56 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_mlx
 	int		all_coins;
 	int		moves;
 	int		eo;
+	int		time;
+	int		frame;
 }				t_mlx;
 
 void	exit_error(int error);
@@ -88,5 +90,8 @@ void	map_pec_size(t_mlx *mlx);
 size_t	ft_intlen(int c);
 char	*ft_itoa(int n);
 void	init_mlx(t_mlx *mlx);
+
+void norm1(t_mlx *mlx, int i, int j);
+void norm2(t_mlx *mlx, int i, int j);
 
 #endif

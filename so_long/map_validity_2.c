@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 12:40:56 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:42:34 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	init_map(t_mlx *mlx)
 	mlx->all_coins = 0;
 	mlx->moves = 0;
 	mlx->eo = 0;
+	mlx->time = 0;
+	mlx->frame = 0;
 }
 
 void	map_top(char	*line, t_mlx *mlx)

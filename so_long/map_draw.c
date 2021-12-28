@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 15:36:13 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:56:37 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ void	map_draw_2(t_mlx *mlx)
 	{
 		paste_img(mlx, "../img/0.xpm");
 		paste_img(mlx, "../img/P.xpm");
-	}
-	if (mlx->map_in_array[mlx->j][mlx->i] == 'K')
-	{
-		paste_img(mlx, "../img/0.xpm");
-		paste_img(mlx, "../img/K.xpm");
 	}
 }
 

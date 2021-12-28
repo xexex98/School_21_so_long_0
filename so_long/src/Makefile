@@ -6,7 +6,7 @@
 #    By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/21 13:37:47 by mbarra            #+#    #+#              #
-#    Updated: 2021/12/28 15:00:06 by mbarra           ###   ########.fr        #
+#    Updated: 2021/12/28 18:43:15 by mbarra           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,31 +27,25 @@ SRC =	so_long.c\
 OBJECTS = $(patsubst %.c, %.o, $(SRC))
 
 RM 			= rm -f
-FLAGS 		= -Wall -Wextra -Werror -D BUFFER_SIZE=1 
+FLAGS 		= -Wall -Wextra -Werror
 LINKS		= -Lmlx -lmlx -framework OpenGL -framework AppKit
-# ./mlx/libmlx.a
 
 all: $(NAME) 
 
 $(NAME): $(OBJECTS)
-	@make -C ./mlx
-	@gcc $(OBJECTS) $(LINKS) -o $(NAME)
-	@rm *.o
-#flags
+	make -C ./mlx
+	gcc $(FLAGS) $(OBJECTS) $(LINKS) -o $(NAME)
 
 %.o: %.c $(HEADER)
-	@gcc -c $< -o $@
-#flags
-#header?
+	gcc $(FLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJECTS)
-cleanmlx:
-	@make clean -C ./mlx
-#fclean
-f: clean
-	@$(RM) $(NAME)
+	$(RM) $(OBJECTS)
+	make clean -C ./mlx
 
-re: f all
+fclean: clean
+	$(RM) $(NAME)
 
-.PHONY: all clean f re
+re: fclean all
+
+.PHONY: all clean fclean re

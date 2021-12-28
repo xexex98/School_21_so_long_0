@@ -6,11 +6,11 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 17:56:37 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 18:38:55 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long/so_long.h"
+#include "so_long.h"
 
 char	**map_in_array(char *mapf, t_mlx *mlx)
 {

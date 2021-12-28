@@ -6,11 +6,11 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:59:45 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/27 19:02:34 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 18:33:15 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long/so_long.h"
+#include "so_long.h"
 
 void	map_validity(t_mlx *mlx, int argc, char *mapf)
 {

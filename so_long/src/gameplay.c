@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 18:59:00 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 17:50:05 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 20:23:53 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	move(t_mlx *mlx, int x, int y)
 		coin(mlx);
 		death(mlx);
 		map_draw(mlx);
-		mlx_string_put(mlx->mlx, mlx->win, 10, 10, 0x39124C, "steps");
-		mlx_string_put(mlx->mlx, mlx->win, 50, 10,
-			0x39124C, ft_itoa(mlx->moves));
+		// mlx_string_put(mlx->mlx, mlx->win, 10, 10, 0x39124C, "steps");
+		// mlx_string_put(mlx->mlx, mlx->win, 50, 10,
+			// 0x39124C, ft_itoa(mlx->moves));
 		printf("Moves: %i\n", mlx->moves);
 		mlx->img = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm",
 				&mlx->img_width, &mlx->img_height);

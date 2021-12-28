@@ -6,11 +6,11 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 17:42:34 by mbarra           ###   ########.fr       */
+/*   Updated: 2021/12/28 18:33:12 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long/so_long.h"
+#include "so_long.h"
 
 void	init_map(t_mlx *mlx)
 {

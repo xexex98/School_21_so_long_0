@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 17:25:59 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 16:45:26 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 18:07:38 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	animathion(t_mlx *mlx)
 {
@@ -26,9 +26,9 @@ int	paste_img_2(t_mlx *mlx)
 {
 	int	i;
 	int	j;
-
 	i = 0;
 	j = 0;
+
 	animathion(mlx);
 	while (mlx->map_in_array[j])
 	{

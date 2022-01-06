@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 23:24:58 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:53:18 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include <mlx.h>
 # include "../gnl/get_next_line.h"
 # include <stdio.h>
@@ -69,6 +69,7 @@ void	free_map(t_mlx *mlx);
 
 void	coin(t_mlx	*mlx);
 void	gexit(t_mlx *mlx);
+void	death(t_mlx *mlx);
 void	move(t_mlx *mlx, int x, int y);
 int		key_press_hook(int keycode, t_mlx *mlx);
 
@@ -83,15 +84,20 @@ void	map_draw(t_mlx *mlx);
 void	player_pos(t_mlx *mlx);
 
 void	init_map(t_mlx *mlx);
-void	map_top(t_mlx *mlx);
+void	map_top(char	*line, t_mlx *mlx);
 void	map_mid(t_mlx *mlx);
 void	map_end(t_mlx *mlx);
-void	map_mid_end(t_mlx *mlx);
+void	map_mid_end(char *line, t_mlx *mlx);
 
 void	map_validity(t_mlx *mlx, int argc, char *mapf);
 void	map_name(char	*name);
-void	p_e_c_num(t_mlx *mlx);
+void	p_e_c_num(char	*line, t_mlx *mlx);
 void	map_pec_size(t_mlx *mlx);
 void	open_img(t_mlx *mlx);
+
+void	animathion(t_mlx *mlx);
+int		paste_img_2(t_mlx *mlx);
+void	norm1(t_mlx *mlx, int i, int j);
+void	norm2(t_mlx *mlx, int i, int j);
 
 #endif

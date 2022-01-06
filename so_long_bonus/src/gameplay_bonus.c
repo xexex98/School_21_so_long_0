@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameplay.c                                         :+:      :+:    :+:   */
+/*   gameplay_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 18:59:00 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 23:25:30 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:53:45 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	coin(t_mlx	*mlx)
 {
@@ -35,8 +35,21 @@ void	gexit(t_mlx *mlx)
 	}
 }
 
+void	death(t_mlx *mlx)
+{
+	if (mlx->map_in_array[mlx->y][mlx->x] == 'K')
+	{
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		free_map(mlx);
+		printf("You dead, lul!\n");
+		exit(0);
+	}
+}
+
 void	move(t_mlx *mlx, int x, int y)
 {
+	char	*str;
+
 	if (mlx->map_in_array[mlx->y + y][mlx->x + x] != '1')
 	{
 		mlx->moves++;
@@ -45,10 +58,16 @@ void	move(t_mlx *mlx, int x, int y)
 		mlx->y += y;
 		mlx->x += x;
 		coin(mlx);
+		death(mlx);
 		map_draw(mlx);
+		str = ft_itoa(mlx->moves);
+		mlx_string_put(mlx->mlx, mlx->win, 10, 10, 0x39124C, "steps");
+		mlx_string_put(mlx->mlx, mlx->win, 50, 10,
+			0x39124C, str);
 		printf("Moves: %i\n", mlx->moves);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img8,
 			mlx->x * PIXELS, mlx->y * PIXELS);
+		free(str);
 		gexit(mlx);
 	}
 }

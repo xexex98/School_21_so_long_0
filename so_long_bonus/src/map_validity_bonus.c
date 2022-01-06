@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validity.c                                     :+:      :+:    :+:   */
+/*   map_validity_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:59:45 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 23:25:20 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:53:33 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	map_validity(t_mlx *mlx, int argc, char *mapf)
 {
@@ -24,8 +24,8 @@ void	map_validity(t_mlx *mlx, int argc, char *mapf)
 		mlx->len = ft_strlen(mlx->line);
 		mlx->columns = mlx->len - 1;
 		map_name(mapf);
-		map_top(mlx);
-		map_mid_end(mlx);
+		map_top(mlx->line, mlx);
+		map_mid_end(mlx->line, mlx);
 		map_pec_size(mlx);
 		mlx->map_in_array = map_in_array(mapf, mlx);
 	}
@@ -36,6 +36,7 @@ void	map_validity(t_mlx *mlx, int argc, char *mapf)
 void	map_name(char	*name)
 {
 	int	i;
+	int	j;
 	int	len;
 
 	len = ft_strlen(name);
@@ -45,7 +46,7 @@ void	map_name(char	*name)
 		exit_error(7);
 }
 
-void	p_e_c_num(t_mlx *mlx)
+void	p_e_c_num(char	*line, t_mlx *mlx)
 {
 	while (mlx->line[mlx->j])
 	{
@@ -79,6 +80,10 @@ void	open_img(t_mlx *mlx)
 	mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, "../img/E.xpm",
 			&mlx->img_width, &mlx->img_height);
 	mlx->img5 = mlx_xpm_file_to_image(mlx->mlx, "../img/Eo.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img6 = mlx_xpm_file_to_image(mlx->mlx, "../img/K.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img7 = mlx_xpm_file_to_image(mlx->mlx, "../img/Ko.xpm",
 			&mlx->img_width, &mlx->img_height);
 	mlx->img8 = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm",
 			&mlx->img_width, &mlx->img_height);

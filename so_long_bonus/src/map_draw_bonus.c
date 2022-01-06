@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_draw.c                                         :+:      :+:    :+:   */
+/*   map_draw_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 20:22:12 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:53:40 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	**map_in_array(char *mapf, t_mlx *mlx)
 {
@@ -64,7 +64,11 @@ void	map_draw_3(t_mlx *mlx)
 	{
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
 			mlx->i * PIXELS, mlx->j * PIXELS);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4,
+		if (mlx->eo == 1)
+			mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img5,
+				mlx->i * PIXELS, mlx->j * PIXELS);
+		else
+			mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4,
 				mlx->i * PIXELS, mlx->j * PIXELS);
 	}
 }

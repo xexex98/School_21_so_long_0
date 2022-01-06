@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:59:45 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 18:33:15 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:43:14 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ void	map_validity(t_mlx *mlx, int argc, char *mapf)
 		mlx->map_in_array = map_in_array(mapf, mlx);
 	}
 	else
-		exit_error(10);
+		exit_error(7);
 }
 
 void	map_name(char	*name)
 {
 	int	i;
+	int	j;
+	int	len;
 
-	i = 0;
-	while (name[i] != '.')
-		i++;
-	i++;
-	if (name[i] != 'b' && name[i + 1] != 'e'
-		&& name[i + 2] != 'r' && name[i + 3] != '\0')
-		exit_error(6);
+	len = ft_strlen(name);
+	i = len - 3;
+	if (name[i - 1] != '.' || name[i] != 'b' || name[i + 1] != 'e'
+		|| name[i + 2] != 'r' || name[i + 3] != '\0')
+		exit_error(7);
 }
 
 void	p_e_c_num(char	*line, t_mlx *mlx)
@@ -67,4 +67,24 @@ void	map_pec_size(t_mlx	*mlx)
 		exit_error(1);
 	if (mlx->len - 1 == mlx->lines)
 		exit_error(2);
+}
+
+void	open_img(t_mlx *mlx)
+{
+	mlx->img1 = mlx_xpm_file_to_image(mlx->mlx, "../img/0.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img2 = mlx_xpm_file_to_image(mlx->mlx, "../img/1.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img3 = mlx_xpm_file_to_image(mlx->mlx, "../img/C.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, "../img/E.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img5 = mlx_xpm_file_to_image(mlx->mlx, "../img/Eo.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img6 = mlx_xpm_file_to_image(mlx->mlx, "../img/K.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img7 = mlx_xpm_file_to_image(mlx->mlx, "../img/Ko.xpm",
+			&mlx->img_width, &mlx->img_height);
+	mlx->img8 = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm",
+			&mlx->img_width, &mlx->img_height);
 }

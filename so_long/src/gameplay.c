@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 18:59:00 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 20:23:53 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 15:55:38 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	gexit(t_mlx *mlx)
 	if (mlx->map_in_array[mlx->y][mlx->x] == 'E'
 		&& mlx->coins == mlx->all_coins)
 	{
-		mlx_destroy_image(mlx->mlx, mlx->img);
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		free_map(mlx);
 		printf("You won, gg!\n");
@@ -40,7 +39,6 @@ void	death(t_mlx *mlx)
 {
 	if (mlx->map_in_array[mlx->y][mlx->x] == 'K')
 	{
-		mlx_destroy_image(mlx->mlx, mlx->img);
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		free_map(mlx);
 		printf("You dead, lul!\n");
@@ -50,6 +48,8 @@ void	death(t_mlx *mlx)
 
 void	move(t_mlx *mlx, int x, int y)
 {
+	char	*str;
+
 	if (mlx->map_in_array[mlx->y + y][mlx->x + x] != '1')
 	{
 		mlx->moves++;
@@ -60,14 +60,14 @@ void	move(t_mlx *mlx, int x, int y)
 		coin(mlx);
 		death(mlx);
 		map_draw(mlx);
-		// mlx_string_put(mlx->mlx, mlx->win, 10, 10, 0x39124C, "steps");
-		// mlx_string_put(mlx->mlx, mlx->win, 50, 10,
-			// 0x39124C, ft_itoa(mlx->moves));
+		str = ft_itoa(mlx->moves);
+		mlx_string_put(mlx->mlx, mlx->win, 10, 10, 0x39124C, "steps");
+		mlx_string_put(mlx->mlx, mlx->win, 50, 10,
+			0x39124C, str);
 		printf("Moves: %i\n", mlx->moves);
-		mlx->img = mlx_xpm_file_to_image(mlx->mlx, "../img/P.xpm",
-				&mlx->img_width, &mlx->img_height);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img,
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img8,
 			mlx->x * PIXELS, mlx->y * PIXELS);
+		free(str);
 		gexit(mlx);
 	}
 }

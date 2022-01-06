@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:58:10 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/16 21:22:16 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:43:49 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_read(char	*buf2, int fd)
 	{
 		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes < 0)
-			return (NULL);
+			exit_error(7);
 		buf[bytes] = '\0';
 		if (!buf2)
 		{

@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:18:39 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/17 17:01:09 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 17:42:23 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "../src/so_long.h"
 
 char	*get_next_line(int fd);
 int		ft_strlen(char *str);

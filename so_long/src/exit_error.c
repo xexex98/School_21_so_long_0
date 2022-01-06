@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:04:03 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 14:50:20 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 15:33:51 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	exit_error(int error)
 
 int	close_game(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	free_map(mlx);
 	printf("_B_B_\n");

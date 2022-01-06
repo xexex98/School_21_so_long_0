@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2021/12/28 18:38:55 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/06 16:16:54 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,42 @@ char	**map_in_array(char *mapf, t_mlx *mlx)
 	return (array);
 }
 
-void	paste_img(t_mlx *mlx, char	*imgname)
-{
-	int	fd;
-
-	fd = open(imgname, O_RDONLY);
-	if (fd < 0)
-		exit_error(9);
-	mlx->img = mlx_xpm_file_to_image(mlx->mlx, imgname,
-			&mlx->img_width, &mlx->img_height);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img,
-		mlx->i * PIXELS, mlx->j * PIXELS);
-	close (fd);
-}
-
 void	map_draw_2(t_mlx *mlx)
 {
 	if (mlx->map_in_array[mlx->j][mlx->i] == 'C')
 	{
-		paste_img(mlx, "../img/0.xpm");
-		paste_img(mlx, "../img/C.xpm");
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img3,
+			mlx->i * PIXELS, mlx->j * PIXELS);
 	}
 	if (mlx->map_in_array[mlx->j][mlx->i] == 'P')
 	{
-		paste_img(mlx, "../img/0.xpm");
-		paste_img(mlx, "../img/P.xpm");
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img8,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+	}
+}
+
+void	map_draw_3(t_mlx *mlx)
+{
+	if (mlx->map_in_array[mlx->j][mlx->i] == '1')
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img2,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+	if (mlx->map_in_array[mlx->j][mlx->i] == '0')
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+	if (mlx->map_in_array[mlx->j][mlx->i] == 'E')
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
+			mlx->i * PIXELS, mlx->j * PIXELS);
+		if (mlx->eo == 1)
+			mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img5,
+				mlx->i * PIXELS, mlx->j * PIXELS);
+		else
+			mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4,
+				mlx->i * PIXELS, mlx->j * PIXELS);
 	}
 }
 
@@ -68,18 +79,7 @@ void	map_draw(t_mlx *mlx)
 	{
 		while (mlx->map_in_array[mlx->j][mlx->i] != '\0')
 		{
-			if (mlx->map_in_array[mlx->j][mlx->i] == '1')
-				paste_img(mlx, "../img/1.xpm");
-			if (mlx->map_in_array[mlx->j][mlx->i] == '0')
-				paste_img(mlx, "../img/0.xpm");
-			if (mlx->map_in_array[mlx->j][mlx->i] == 'E')
-			{
-				paste_img(mlx, "../img/0.xpm");
-				if (mlx->eo == 1)
-					paste_img(mlx, "../img/Eo.xpm");
-				else
-					paste_img(mlx, "../img/E.xpm");
-			}
+			map_draw_3(mlx);
 			map_draw_2(mlx);
 			mlx->i++;
 		}

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbarra <mbarra@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:18:08 by mbarra            #+#    #+#             */
-/*   Updated: 2021/11/09 21:05:07 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/07 15:32:40 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../src/so_long.h"
 
 int	ft_strlen(char *str)
 {

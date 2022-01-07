@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:12:40 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 20:22:12 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/07 15:47:10 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	map_draw_3(t_mlx *mlx)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1,
 			mlx->i * PIXELS, mlx->j * PIXELS);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4,
-				mlx->i * PIXELS, mlx->j * PIXELS);
+			mlx->i * PIXELS, mlx->j * PIXELS);
 	}
 }
 

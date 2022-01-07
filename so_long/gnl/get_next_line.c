@@ -6,11 +6,11 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:58:10 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 17:43:49 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/07 15:32:43 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../src/so_long.h"
 
 char	*ft_read(char	*buf2, int fd)
 {

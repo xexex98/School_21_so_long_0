@@ -6,19 +6,19 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:26:18 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 23:24:58 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/07 15:31:49 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <mlx.h>
-# include "../gnl/get_next_line.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
+# define BUFFER_SIZE 1
 # define PIXELS	40
 # define A		0
 # define S		1
@@ -62,6 +62,15 @@ typedef struct s_mlx
 	int		time;
 	int		frame;
 }				t_mlx;
+
+char	*get_next_line(int fd);
+int		ft_strlen(char *str);
+char	*ft_strchr(char *str, char c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_read(char *buf2, int fd);
+char	*ft_line(char *buf2);
+char	*ft_line_reminder(char *buf2);
+int		ft_strlen_n(char *s);
 
 void	exit_error(int error);
 int		close_game(t_mlx *mlx);

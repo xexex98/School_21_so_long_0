@@ -6,7 +6,7 @@
 /*   By: mbarra <mbarra@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:52:41 by mbarra            #+#    #+#             */
-/*   Updated: 2022/01/06 17:53:36 by mbarra           ###   ########.fr       */
+/*   Updated: 2022/01/07 15:33:26 by mbarra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_map(t_mlx *mlx)
 	mlx->frame = 0;
 }
 
-void	map_top(char	*line, t_mlx *mlx)
+void	map_top(t_mlx *mlx)
 {
 	mlx->i = 0;
 	while (mlx->line[mlx->i] != '\n')
@@ -50,7 +50,7 @@ void	map_top(char	*line, t_mlx *mlx)
 void	map_mid(t_mlx *mlx)
 {
 	mlx->i = 0;
-	p_e_c_num(mlx->line, mlx);
+	p_e_c_num(mlx);
 	if (mlx->line[0] != '1' || mlx->line[mlx->columns - 1] != '1')
 		exit_error(4);
 	while (mlx->line[mlx->i])
@@ -78,7 +78,7 @@ void	map_end(t_mlx *mlx)
 	mlx->i = 0;
 }
 
-void	map_mid_end(char *line, t_mlx *mlx)
+void	map_mid_end(t_mlx *mlx)
 {
 	mlx->line = get_next_line(mlx->fd);
 	free(mlx->line);
